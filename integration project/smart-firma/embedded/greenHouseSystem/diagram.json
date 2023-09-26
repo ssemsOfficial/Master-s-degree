@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "embedded sys",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 25.06, "left": -261.75, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": -59.3,
+      "left": 10.97,
+      "attrs": { "size": "17" }
+    },
+    { "type": "wokwi-a4988", "id": "drv1", "top": 114.89, "left": -89.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "drv1:2B", "stepper1:A-", "green", [ "h0" ] ],
+    [ "drv1:2A", "stepper1:A+", "green", [ "h0" ] ],
+    [ "drv1:1A", "stepper1:B+", "green", [ "h0" ] ],
+    [ "drv1:1B", "stepper1:B-", "green", [ "h0" ] ],
+    [ "drv1:SLEEP", "drv1:RESET", "green", [ "h-14.43", "v-6.15" ] ],
+    [ "esp:VIN", "drv1:VDD", "red", [ "h-21.02", "v31.54", "h266.38", "v-34.08" ] ],
+    [ "esp:GND.2", "drv1:GND.1", "black", [ "h-27.28", "v49.38", "h283.76", "v-36.17" ] ],
+    [ "drv1:DIR", "esp:D15", "green", [ "h-56.86", "v-8.66" ] ],
+    [ "drv1:STEP", "esp:D2", "green", [ "h-49.9", "v-20.62", "h-2.78" ] ]
+  ],
+  "dependencies": {}
+}
